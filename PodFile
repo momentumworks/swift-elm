@@ -1,0 +1,5 @@
+use_frameworks!
+
+pod 'RxSwift', '~> 2.0.0'
+pod 'RxCocoa', :git => 'git@github.com:momentumworks/RxSwift.git'
+pod 'RxBlocking', '~> 2.0.0'
