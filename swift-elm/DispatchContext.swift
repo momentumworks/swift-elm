@@ -1,5 +1,5 @@
 
 protocol DispatchContext {
-    typealias Action
+    associatedtype Action
     var dispatch: Action -> () { get }
 }

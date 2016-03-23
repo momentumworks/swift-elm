@@ -18,7 +18,7 @@
 		31BF7D451C58EAE4008DA37C /* MWNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF7D431C58EAE4008DA37C /* MWNode.swift */; };
 		31BF7D461C58EAE4008DA37C /* MWNativeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF7D441C58EAE4008DA37C /* MWNativeComponent.swift */; };
 		31BF7D4A1C58EB52008DA37C /* LabelsStressTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF7D481C58EB52008DA37C /* LabelsStressTest.swift */; };
-		3797CF937903E69EB59C5C82 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47078DB95DFE2F3FED2FD032 /* Pods.framework */; };
+		4290C69901F063DF9F087137 /* Pods_swift_elm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5A831AC115F1CF3FCB40C6 /* Pods_swift_elm.framework */; };
 		E30A526F934D6BF61314B860 /* LICENCE in Resources */ = {isa = PBXBuildFile; fileRef = E306B9CCAF0B3D125CB506EB /* LICENCE */; };
 /* End PBXBuildFile section */
 
@@ -36,11 +36,12 @@
 		31BF7D431C58EAE4008DA37C /* MWNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWNode.swift; sourceTree = "<group>"; };
 		31BF7D441C58EAE4008DA37C /* MWNativeComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWNativeComponent.swift; sourceTree = "<group>"; };
 		31BF7D481C58EB52008DA37C /* LabelsStressTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelsStressTest.swift; sourceTree = "<group>"; };
-		3B09A8930BCFEFDE87C70247 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		3F87F0B3EBF68DB9D9D29396 /* Pods-swift-elm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift-elm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-swift-elm/Pods-swift-elm.debug.xcconfig"; sourceTree = "<group>"; };
 		47078DB95DFE2F3FED2FD032 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC223F0DAAB99AE4C11C429F /* Pods-swift-elm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift-elm.release.xcconfig"; path = "Pods/Target Support Files/Pods-swift-elm/Pods-swift-elm.release.xcconfig"; sourceTree = "<group>"; };
 		E306B9CCAF0B3D125CB506EB /* LICENCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
 		E309F2FEA00BA6B95C5523FA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		F08B0B7CE609B8AAD3E743E2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EC5A831AC115F1CF3FCB40C6 /* Pods_swift_elm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swift_elm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,22 +49,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3797CF937903E69EB59C5C82 /* Pods.framework in Frameworks */,
+				4290C69901F063DF9F087137 /* Pods_swift_elm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12F0C28005EA081DFCEB8A00 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3F87F0B3EBF68DB9D9D29396 /* Pods-swift-elm.debug.xcconfig */,
+				DC223F0DAAB99AE4C11C429F /* Pods-swift-elm.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		31BF7D1C1C58E733008DA37C = {
 			isa = PBXGroup;
 			children = (
 				31BF7D271C58E734008DA37C /* swift-elm */,
 				31BF7D261C58E734008DA37C /* Products */,
-				E20D4E2DC7E200C9EE2F9457 /* Pods */,
 				3295EE251673AC2EC246C746 /* Frameworks */,
 				E306B9CCAF0B3D125CB506EB /* LICENCE */,
 				E309F2FEA00BA6B95C5523FA /* README.md */,
+				12F0C28005EA081DFCEB8A00 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,17 +132,9 @@
 			isa = PBXGroup;
 			children = (
 				47078DB95DFE2F3FED2FD032 /* Pods.framework */,
+				EC5A831AC115F1CF3FCB40C6 /* Pods_swift_elm.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E20D4E2DC7E200C9EE2F9457 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F08B0B7CE609B8AAD3E743E2 /* Pods.debug.xcconfig */,
-				3B09A8930BCFEFDE87C70247 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,12 +144,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 31BF7D321C58E734008DA37C /* Build configuration list for PBXNativeTarget "swift-elm" */;
 			buildPhases = (
-				D9DBF15D3B82D7DAFFC519D3 /* Check Pods Manifest.lock */,
+				67C83178B6A89448159FAD7B /* Check Pods Manifest.lock */,
 				31BF7D211C58E734008DA37C /* Sources */,
 				31BF7D221C58E734008DA37C /* Frameworks */,
 				31BF7D231C58E734008DA37C /* Resources */,
-				9F19958F2179BB0AE0BD6730 /* Embed Pods Frameworks */,
-				55C9E23EDD15D5F295E85B95 /* Copy Pods Resources */,
+				516B30EC9B3A0CCDB5094817 /* Embed Pods Frameworks */,
+				24384EFEDFAB5E7BC3BAAD9C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -205,7 +207,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		55C9E23EDD15D5F295E85B95 /* Copy Pods Resources */ = {
+		24384EFEDFAB5E7BC3BAAD9C /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -217,10 +219,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-swift-elm/Pods-swift-elm-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9F19958F2179BB0AE0BD6730 /* Embed Pods Frameworks */ = {
+		516B30EC9B3A0CCDB5094817 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -232,10 +234,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-swift-elm/Pods-swift-elm-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D9DBF15D3B82D7DAFFC519D3 /* Check Pods Manifest.lock */ = {
+		67C83178B6A89448159FAD7B /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -365,7 +367,7 @@
 		};
 		31BF7D331C58E734008DA37C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F08B0B7CE609B8AAD3E743E2 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 3F87F0B3EBF68DB9D9D29396 /* Pods-swift-elm.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -378,7 +380,7 @@
 		};
 		31BF7D341C58E734008DA37C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B09A8930BCFEFDE87C70247 /* Pods.release.xcconfig */;
+			baseConfigurationReference = DC223F0DAAB99AE4C11C429F /* Pods-swift-elm.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;

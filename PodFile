@@ -1,5 +1,7 @@
 use_frameworks!
 
-pod 'RxSwift', '~> 2.0.0'
-pod 'RxCocoa', :git => 'git@github.com:momentumworks/RxSwift.git'
-pod 'RxBlocking', '~> 2.0.0'
+target "swift-elm" do
+    pod 'RxSwift', '~> 2.3.1'
+    pod 'RxCocoa', '~> 2.3.1'
+    pod 'RxBlocking', '~> 2.3.1'
+end

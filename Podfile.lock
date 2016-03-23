@@ -1,27 +1,20 @@
 PODS:
-  - RxBlocking (2.0.0):
-    - RxSwift (~> 2.0)
-  - RxCocoa (2.0.0):
-    - RxSwift (~> 2.0)
-  - RxSwift (2.0.0)
+  - RxBlocking (2.3.1):
+    - RxSwift (~> 2.3.1)
+  - RxCocoa (2.3.1):
+    - RxSwift (~> 2.3.1)
+  - RxSwift (2.3.1)
 
 DEPENDENCIES:
-  - RxBlocking (~> 2.0.0)
-  - RxCocoa (from `git@github.com:momentumworks/RxSwift.git`)
-  - RxSwift (~> 2.0.0)
-
-EXTERNAL SOURCES:
-  RxCocoa:
-    :git: git@github.com:momentumworks/RxSwift.git
-
-CHECKOUT OPTIONS:
-  RxCocoa:
-    :commit: 966445b0d0c6c68c589b39522698e5557626d05c
-    :git: git@github.com:momentumworks/RxSwift.git
+  - RxBlocking (~> 2.3.1)
+  - RxCocoa (~> 2.3.1)
+  - RxSwift (~> 2.3.1)
 
 SPEC CHECKSUMS:
-  RxBlocking: a95a10ed54eb5d116f6c9a87047ff671e181d07b
-  RxCocoa: b0ebd70b4f7450bdb3c8987b122f8fd568dc1e2f
-  RxSwift: d83246efa6f16c50c143bec134649d045498f601
+  RxBlocking: 84fd81865a641a3843b33bae7b8315e78ddbd383
+  RxCocoa: a2baaf3462b989559a51dce59d78fbebb8fe0afa
+  RxSwift: 829b2843e9eddc77a02cb3f5117f0d55f8f646f1
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 2afb527e91c28939791c1a25aea35f75a2b1fa8b
+
+COCOAPODS: 1.0.0.beta.3

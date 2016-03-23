@@ -8,9 +8,9 @@ struct MWComponentBase {
 }
 
 protocol MWComponent {
-    typealias Model
-    typealias Action
-    typealias Context
+    associatedtype Model
+    associatedtype Action
+    associatedtype Context
 
     static func initModel() -> Model
     static func update(action: Action, model: Model) -> Model
