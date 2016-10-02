@@ -1,11 +1,11 @@
 
 import Foundation
 
-func timeAndLog<T>(label: String) -> (() -> T) -> T {
-    func timeFn(fn: () -> T) -> T {
-        let start = NSDate()
+func timeAndLog<T>(_ label: String) -> (() -> T) -> T {
+    func timeFn(_ fn: () -> T) -> T {
+        let start = Date()
         let result = fn()
-        let timeTaken = NSDate().timeIntervalSinceDate(start)
+        let timeTaken = Date().timeIntervalSince(start)
         let formatted = NSString(format: "%.6f", timeTaken)
         NSLog("\(label) completed in \(formatted)s")
         return result

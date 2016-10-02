@@ -13,6 +13,6 @@ protocol MWComponent {
     associatedtype Context
 
     static func initModel() -> Model
-    static func update(action: Action, model: Model) -> Model
-    static func view(context: Context, model: Model, base: MWComponentBase) -> MWNode
+    static func update(_ action: Action, model: Model) -> Model
+    static func view(_ context: Context, model: Model, base: MWComponentBase) -> MWNode
 }

@@ -6,15 +6,15 @@ import RxCocoa
 typealias App = ListOfLabels
 
 enum AppAction {
-    case Init
-    case Action(App.Action)
+    case initApp
+    case action(App.Action)
 }
 
 extension AppAction : Equatable {}
 func ==(lhs: AppAction, rhs: AppAction) -> Bool {
     // For the action enums, we only want this to return true in cases where we want to suppress repeated calls of the same action
     switch (lhs, rhs) {
-    case (let .Action(left), let .Action(right)):
+    case (let .action(left), let .action(right)):
         return left == right
     case _:
         return false
@@ -23,7 +23,7 @@ func ==(lhs: AppAction, rhs: AppAction) -> Bool {
 
 let disposeBag = DisposeBag()
 
-func render(hostView: NSView, base: MWComponentBase) {
+func render(_ hostView: NSView, base: MWComponentBase) {
     let appChannel = PublishSubject<AppAction>()
     var appNodes = Dictionary<String, NSView>()
     var appNodeKeys = Set<String>()
@@ -33,19 +33,19 @@ func render(hostView: NSView, base: MWComponentBase) {
         let updatedModel: App.Model
         print(appAction)
         switch appAction {
-        case .Init:
+        case .initApp:
             updatedModel = model
-        case .Action(let action):
+        case .action(let action):
             updatedModel = App.update(action, model: model)
         }
         return updatedModel
     }
     
-    loop.subscribeNext{ model in
+    loop.subscribe(onNext: { model in
         timeAndLog("Updating model")({
             
             let updatedRoot = timeAndLog("Building the Virtual DOM")({
-                App.view(App.Context(dispatch: { appChannel.onNext(AppAction.Action($0)) }),
+                App.view(App.Context(dispatch: { appChannel.onNext(AppAction.action($0)) }),
                     model: model,
                     base: base)
             })
@@ -68,8 +68,8 @@ func render(hostView: NSView, base: MWComponentBase) {
                 }
             })
             
-            let removedNodeIds = timeAndLog("Calculating the removed nodes")({
-                appNodeKeys.subtract(allNodeIds)
+          let removedNodeIds = timeAndLog("Calculating the removed nodes")({
+                appNodeKeys.subtracting(allNodeIds)
             })
             
             timeAndLog("Rendering the new nodes")({
@@ -90,17 +90,17 @@ func render(hostView: NSView, base: MWComponentBase) {
                     appStreams[vnodeId] = stream
                     
                     // This next step causes the loop to run again, which we don't want.
-                    stream?.on(.Next(vnode.model()!))
+                    stream?.on(.next(vnode.model()!))
                 }
             })
             
             timeAndLog("Removing the deleted nodes")({
                 for vnodeId in removedNodeIds {
                     appNodes[vnodeId]?.removeFromSuperview()
-                    appNodes.removeValueForKey(vnodeId)
+                    appNodes.removeValue(forKey: vnodeId)
                     appNodeKeys.remove(vnodeId)
-                    let toBeDisposed = appStreams.removeValueForKey(vnodeId)
-                    toBeDisposed?.on(.Completed)
+                    let toBeDisposed = appStreams.removeValue(forKey: vnodeId)
+                    toBeDisposed?.on(.completed)
                     toBeDisposed?.dispose()
                 }
             })
@@ -112,14 +112,14 @@ func render(hostView: NSView, base: MWComponentBase) {
                     view?.frame = vnode.base().frame
                     
                     if (vnode.model() != nil) {
-                        appStreams[vnodeId]?.on(.Next(vnode.model()!))
+                        appStreams[vnodeId]?.on(.next(vnode.model()!))
                     }
                 }
             })
         })
-        }.addDisposableTo(disposeBag)
+        }).addDisposableTo(disposeBag)
     
-    appChannel.on(.Next(AppAction.Init))
+    appChannel.on(.next(AppAction.initApp))
 }
 
 // MARK: AppDelegate
@@ -131,7 +131,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let disposeBag = DisposeBag()
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         let rootNode = NSView(frame: self.window.contentView!.bounds)
         let appBase = MWComponentBase(id: "app", parentId: nil, frame: self.window.contentView!.bounds)
         render(rootNode, base: appBase)

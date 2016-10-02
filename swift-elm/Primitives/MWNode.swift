@@ -3,13 +3,13 @@ import Cocoa
 import RxSwift
 
 enum MWNode {
-    case View(MWComponentBase, [MWNode])
-    case Button(MWComponentBase, MWButtonComponent.Model, MWButtonComponent.Context)
-    case TextField(MWComponentBase, MWTextFieldComponent.Model, MWTextFieldComponent.Context)
+    case view(MWComponentBase, [MWNode])
+    case button(MWComponentBase, MWButtonComponent.Model, MWButtonComponent.Context)
+    case textField(MWComponentBase, MWTextFieldComponent.Model, MWTextFieldComponent.Context)
 
     func flatten() -> Array<MWNode> {
         switch self {
-        case .View(_, let children):
+        case .view(_, let children):
             return [ self ] + children.flatMap { child in child.flatten() }
         case _:
             return [ self ]
@@ -18,42 +18,42 @@ enum MWNode {
 
     func base() -> MWComponentBase {
         switch self {
-        case .View(let base, _):
+        case .view(let base, _):
             return base
-        case .Button(let base, _, _):
+        case .button(let base, _, _):
             return base
-        case .TextField(let base, _, _):
+        case .textField(let base, _, _):
             return base
         }
     }
 
     func model() -> Any? {
         switch self {
-        case .View(_, _):
+        case .view(_, _):
             return nil
-        case .Button(_, let model, _):
+        case .button(_, let model, _):
             return model
-        case .TextField(_, let model, _):
+        case .textField(_, let model, _):
             return model
         }
     }
 
     func createNSView() -> NSView {
         switch self {
-        case .View(let base, _):
+        case .view(let base, _):
             return MWViewComponent.create(base.frame, model: nil)
-        case .Button(let base, let model, _):
+        case .button(let base, let model, _):
             return MWButtonComponent.create(base.frame, model: model)
-        case .TextField(let base, let model, _):
+        case .textField(let base, let model, _):
             return MWTextFieldComponent.create(base.frame, model: model)
         }
     }
 
-    func wireUpNSView(nsView: NSView) -> PublishSubject<Any>? {
+    func wireUpNSView(_ nsView: NSView) -> PublishSubject<Any>? {
         switch (self, nsView) {
-        case (.Button(_, _, let context), _ as NSButton):
+        case (.button(_, _, let context), _ as NSButton):
             return MWButtonComponent.wireUp(context, nsView: nsView)
-        case (.TextField(_, _, let context), _ as NSTextField):
+        case (.textField(_, _, let context), _ as NSTextField):
             return MWTextFieldComponent.wireUp(context, nsView: nsView)
         case _:
             return nil
