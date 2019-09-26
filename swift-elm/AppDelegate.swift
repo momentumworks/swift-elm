@@ -117,7 +117,7 @@ func render(_ hostView: NSView, base: MWComponentBase) {
                 }
             })
         })
-        }).addDisposableTo(disposeBag)
+		}).disposed(by: disposeBag)
     
     appChannel.on(.next(AppAction.initApp))
 }
