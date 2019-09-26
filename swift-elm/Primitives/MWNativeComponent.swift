@@ -68,7 +68,7 @@ class MWButtonComponent: MWNativeComponent {
 
         nsButton.rx.tap.subscribe(onNext: {
             context.onTap()
-        }).addDisposableTo(disposeBag)
+				}).disposed(by: disposeBag)
 
         return nil
     }
@@ -110,10 +110,12 @@ class MWTextFieldComponent: MWNativeComponent {
         let channel = PublishSubject<Any>()
         let nsTextField = nsView as! NSTextField
 
-        channel.map{"\($0)"}.subscribe(nsTextField.rx.textInput.text).addDisposableTo(disposeBag)
-        nsTextField.rx.textInput.text.subscribe(onNext: { text in
-            context.dispatch(Action.update(text))
-        }).addDisposableTo(disposeBag)
+			channel.map{"\($0)"}.subscribe(nsTextField.rx.text)
+				.disposed(by: disposeBag)
+
+        nsTextField.rx.text.subscribe(onNext: { text in
+					context.dispatch(Action.update(text!))
+				}).disposed(by: disposeBag)
 
         return channel
     }
